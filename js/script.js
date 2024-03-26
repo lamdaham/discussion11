@@ -3,6 +3,9 @@ let pokemonList = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","C
 // Answers
 
 // Question 1
+document.getElementById('host-name').textContent = 'Ivan Lam'; 
+document.getElementById('collaborator-name').textContent = 'Andrew Shao'; 
+document.getElementById('collaborator-2-name').textContent = 'Ivan Lam';
 
 
 
@@ -16,24 +19,55 @@ let pokemonList = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","C
 // Question 3
 // Try change event first
 // There is another event which fires for every character. This is what we want to use.
-
+document.getElementById('first_name').addEventListener('input', (event) => {
+    if (event.target.value === 'John') {
+      document.getElementById('last_name').value = 'Doe';
+    }
+  });
+  
 
 
 // Question 4
 // Try change event first
 // There is another event which fires for every character. This is what we want to use.
 
+document.getElementById('user_name').addEventListener('input', (event) => {
+  const usernameAlert = document.getElementById('username-alert');
+  if (pokemonList.includes(event.target.value)) {
+    usernameAlert.textContent = 'Username already exists';
+  } else {
+    usernameAlert.textContent = 'Unique username created';
+  }
+});
+
 
 
 // Question 5
 // Try change event first
 // There is another event which fires for every character. This is what we want to use.
+const passwordInput = document.getElementById('password');
+const confirmPasswordInput = document.getElementById('confirm_password');
+const passwordAlert = document.getElementById('password-alert');
+const hidePasswordButton = document.getElementById('hide-password');
 
+function checkPasswords() {
+    if (passwordInput.value === confirmPasswordInput.value) {
+        passwordAlert.textContent = "Password Matches";
+    } else {
+        passwordAlert.textContent = "Password does not match";
+    }
+}
 
-
+passwordInput.addEventListener('input', checkPasswords);
+confirmPasswordInput.addEventListener('input', checkPasswords);
 
 //Question 6
-
+document.getElementById('radio-reset-button').addEventListener('click', () => {
+    document.querySelectorAll('input[name="favorite_day"]').forEach((radio) => {
+      radio.checked = false;
+    });
+  });
+  
 
 
 
@@ -45,9 +79,13 @@ let pokemonList = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","C
 
 
 //Question 8
+function changeBackgroundColor(event) {
+    const color = event.target.value;
+    document.body.style.backgroundColor = color;
+}
 
-
-
+const colorPicker = document.getElementById('color-picker');
+colorPicker.addEventListener('input', changeBackgroundColor);
 
 
 //Question 9 
